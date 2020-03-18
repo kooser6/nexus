@@ -37,7 +37,7 @@ def get_moves(board, move, castle_rights, enpassants, priorityPiece = False):
     ret = []
     for key, square in enumerate(board):
         if square != 0 and square[0] == move:
-            if priorityPiece == False or priorityPiece = 0:
+            if priorityPiece == False or priorityPiece == 0:
                 if pawn_start_square(key) and square[1] == 0:
                     if move == 0:
                         directone = key + (threat.directions[0] * 2)
@@ -132,7 +132,7 @@ def get_moves(board, move, castle_rights, enpassants, priorityPiece = False):
                             temp_board[key] = 0
                             if state.in_check(temp_board, move) == 0:
                                 ret.append([key, directtwo])
-            if priorityPiece == False or priorityPiece = 5:
+            if priorityPiece == False or priorityPiece == 5:
                 if square[1] == 5 and state.in_check(board, move) == 0:
                     if castle_rights[move][0] == True:
                         if move == 0:
@@ -182,7 +182,7 @@ def get_moves(board, move, castle_rights, enpassants, priorityPiece = False):
                                 ret.append([key, local_b])
             for key_check, square_check in enumerate(board):
                 if threat.is_threat(key, key_check, board):
-                    if priorityPiece == False or priorityPiece = 0:
+                    if priorityPiece == False or priorityPiece == 0:
                         if square_check == 0:
                             if square[1] == 0:
                                 for enpassant_key, enpassant_check in enumerate(enpassants):
@@ -203,7 +203,7 @@ def get_moves(board, move, castle_rights, enpassants, priorityPiece = False):
                         if is_not_opposite_color(square[0], square_check[0]):
                             continue
                     skipSection = False
-                    if priorityPiece == False or priorityPiece = 5:
+                    if priorityPiece == False or priorityPiece == 5:
                         if square[1] == 5:
                             for threat_key_check in threat.valid_keys:
                                 if board[threat_key_check] == 0:
