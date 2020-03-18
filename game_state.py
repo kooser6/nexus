@@ -5,8 +5,8 @@ import threat
 class GameState:
     def __init__(self, color, board, half_moves, castle_rights, enpassants, history):
         """ Construct A New Game State """
-		self.board = board
-		self.color = color
+        self.board = board
+        self.color = color
         self.half_moves = half_moves
         self.castle_rights = castle_rights
         self.enpassants = enpassants
