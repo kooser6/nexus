@@ -1,5 +1,7 @@
+import data.tests.move_tests
 import data.tests.state_tests
 import data.tests.threat_tests
+import move
 import state
 import threat
 import unittest
