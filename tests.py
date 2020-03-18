@@ -329,3 +329,33 @@ class TestThreatModule(unittest.TestCase):
         self.assertEqual(threat.is_threat(87, 103, data.tests.threat_tests.board_txc), True)
         self.assertEqual(threat.is_threat(87, 104, data.tests.threat_tests.board_txc), True)
         self.assertEqual(threat.is_threat(16, 16, data.tests.threat_tests.board_txc), False)
+
+class TestStateModule(unittest.TestCase):
+    def test_add(self):
+        self.assertEqual(state.is_draw(0, data.tests.state_tests.board_xre, 50, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], []), True)
+        self.assertEqual(state.is_draw(0, data.tests.state_tests.board_xre, 49, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], []), False)
+        self.assertEqual(state.is_draw(1, data.tests.state_tests.board_xre, 49, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], []), False)
+        self.assertEqual(state.is_draw(2, data.tests.state_tests.board_xre, 49, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], []), False)
+        self.assertEqual(state.is_draw(3, data.tests.state_tests.board_xre, 49, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], []), False)
+        self.assertEqual(state.in_checkmate(3, data.tests.state_tests.noncheckmate_board_one, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-']), False)
+        self.assertEqual(state.in_checkmate(0, data.tests.state_tests.nocheckmate, [[False, False], [False, False], [False, False], [False, False]], ['-', '-', '-', '-']), False)
+        self.assertEqual(state.in_checkmate(0, data.tests.state_tests.checkmate, [[False, False], [False, False], [False, False], [False, False]], ['-', '-', '-', '-']), True)
+        self.assertEqual(state.is_draw(0, data.tests.state_tests.board_xre, 49, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], [[0, data.tests.state_tests.board_xre], [0, data.tests.state_tests.board_xre], [0, data.tests.state_tests.nocheckmate], [0, data.tests.state_tests.nocheckmate]]), True)
+        self.assertEqual(state.is_draw(0, data.tests.state_tests.stalemate, 33, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], []), True)
+        self.assertEqual(state.is_draw(1, data.tests.state_tests.stalemate, 33, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], []), True)
+        self.assertEqual(state.is_draw(2, data.tests.state_tests.stalemate, 33, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], []), True)
+        self.assertEqual(state.is_draw(3, data.tests.state_tests.stalemate, 33, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], []), True)
+        self.assertEqual(state.in_stalemate(0, data.tests.state_tests.stalemate, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-']), True)
+        self.assertEqual(state.in_stalemate(1, data.tests.state_tests.stalemate, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-']), True)
+        self.assertEqual(state.in_stalemate(2, data.tests.state_tests.stalemate, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-']), True)
+        self.assertEqual(state.in_stalemate(3, data.tests.state_tests.stalemate, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-']), True)
+        self.assertEqual(state.is_gameover(0, data.tests.state_tests.stalemate, 33, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], []), True)
+        self.assertEqual(state.is_gameover(1, data.tests.state_tests.stalemate, 33, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], []), True)
+        self.assertEqual(state.is_gameover(2, data.tests.state_tests.stalemate, 33, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], []), True)
+        self.assertEqual(state.is_gameover(3, data.tests.state_tests.stalemate, 33, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], []), True)
+        self.assertEqual(state.is_gameover(3, data.tests.state_tests.noncheckmate_board_one, 33, [[True, True], [True, True], [True, True], [True, True]], ['-', '-', '-', '-'], []), False)
+        self.assertEqual(state.is_gameover(0, data.tests.state_tests.nocheckmate, 33, [[False, False], [False, False], [False, False], [False, False]], ['-', '-', '-', '-'], []), False)
+        self.assertEqual(state.is_gameover(0, data.tests.state_tests.checkmate, 33, [[False, False], [False, False], [False, False], [False, False]], ['-', '-', '-', '-'], []), True)
+
+if __name__ == '__main__':
+    unittest.main()
