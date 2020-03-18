@@ -18,11 +18,18 @@ class GameState:
 
     def play_action(self, action):
         """ Play The Action """
-        """                       """
-        """ Preform New Move Here """
-        """                       """
-        newState = GameState(newColor, newBoard, newHalfMoves, newCastleRights, newEnpassants)
+        
+        newState = GameState(newColor, newBoard, newHalfMoves, newCastleRights, newEnpassants, newHistory)
+        return newState
 
     def gameover(self):
         """ Check To See If This Is A Final Position """
         return state.is_gameover(self.color, self.board, self.half_moves, self.castle_rights, self.enpassants)
+
+    def undo_action(self):
+        """ Undo The Action """
+        prev = move.undo(self.history)
+        data = prev[0]
+        hist = prev[1]
+        newState = GameState(data[0], data[1], data[2], data[3], data[4], hist)
+        return newState
