@@ -14,14 +14,14 @@ class GameState:
 
     def get_actions(self):
         """ Get The Avaliable Actions """
-		return move.get_moves(self.board, self.color, self.castle_rights, self.enpassants)
+        return move.get_moves(self.board, self.color, self.castle_rights, self.enpassants)
 
     def play_action(self, action):
         """ Play The Action """
         """                       """
         """ Preform New Move Here """
         """                       """
-		newState = GameState(newColor, newBoard, newHalfMoves, newCastleRights, newEnpassants)
+        newState = GameState(newColor, newBoard, newHalfMoves, newCastleRights, newEnpassants)
 
     def gameover(self):
         """ Check To See If This Is A Final Position """
