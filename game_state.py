@@ -77,24 +77,24 @@ class GameState:
             if self.board[action[0]][1] == 3:
                 if self.color == 0:
                     if action[0] == 244:
-                        new_castle_rights[move][1] = False
+                        new_castle_rights[self.color][1] = False
                     if action[0] == 251:
-                        new_castle_rights[move][0] = False
+                        new_castle_rights[self.color][0] = False
                 elif self.color == 1:
                     if action[0] == 193:
-                        new_castle_rights[move][1] = False
+                        new_castle_rights[self.color][1] = False
                     if action[0] == 81:
-                        new_castle_rights[move][0] = False
+                        new_castle_rights[self.color][0] = False
                 elif self.color == 2:
                     if action[0] == 43:
-                        new_castle_rights[move][1] = False
+                        new_castle_rights[self.color][1] = False
                     if action[0] == 36:
-                        new_castle_rights[move][0] = False
+                        new_castle_rights[self.color][0] = False
                 else:
                     if action[0] == 94:
-                        new_castle_rights[move][1] = False
+                        new_castle_rights[self.color][1] = False
                     if action[0] == 206:
-                        new_castle_rights[move][0] = False
+                        new_castle_rights[self.color][0] = False
             new_board[action[1]] = new_board[action[0]]
             new_board[action[0]] = 0
         new_history.append([self.color, self.board, self.half_moves, self.castle_rights, self.enpassants])
