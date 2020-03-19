@@ -61,3 +61,7 @@ def evaluate_material_balance(board):
     if dd > bb:
         sum += dd - bb
     return sum
+
+def evaluate(board):
+    """ Evaluate The Pieces And Material Balance """
+    return evaluate_material(board) + evaluate_material_balance(board)
