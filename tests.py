@@ -4,6 +4,7 @@ import data.tests.threat_tests
 import move
 import state
 import threat
+import game_state
 import unittest
 
 class TestThreatModule(unittest.TestCase):

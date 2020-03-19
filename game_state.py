@@ -22,8 +22,9 @@ class GameState:
         new_board = self.board[:]
         new_color = move.next_move(self.color)
         new_castle_rights = self.castle_rights[:]
-        new_half_moves = self.half_moves[:]
+        new_half_moves = self.half_moves
         new_enpassants = self.enpassants[:]
+        new_history = self.history
         if self.board[action[0]] == 5 and not(threat.is_king_threat(action[0], action[1], board)):
             ext_req = move.castle_req_keys[action[0]][action[1]]
             ext_rep = move.castle_rep_keys[action[0]][action[1]]
@@ -63,7 +64,7 @@ class GameState:
             if is_promotion_key(to_key, move):
                 if valid_promotion(promotion_code):
                     new_board[action[0]][1] = promotion_code
-        if skipRest = False
+        if skipRest == False:
             if self.board[action[1]] != 0:
                 new_half_moves = 0
             elif self.color == 0:
@@ -111,3 +112,165 @@ class GameState:
         new_history = prev[1]
         new_state = GameState(data[0], data[1], data[2], data[3], data[4], new_history)
         return new_state
+
+    def render(self):
+        """ Render The Board State """
+        outputa = ""
+        outputb = ""
+        outputc = ""
+        outputd = ""
+        outpute = ""
+        outputf = ""
+        outputg = ""
+        outputh = ""
+        outputi = ""
+        outputj = ""
+        outputk = ""
+        outputl = ""
+        outputm = ""
+        outputn = ""
+        start_one = "|"
+        start_two = "|-----|-----|-----|"
+        renderBoard = iter(self.board[:])
+        for i in range(36):
+            next(renderBoard)
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        for i in range(8):
+            value = next(renderBoard)
+            if value == 0:
+                outputa += "     |"
+            else:
+                outputa += " " + str(value[0]) + "." + str(value[1]) + " |"
+        print(start_two + outputa + "-----|-----|-----|\n")
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        for i in range(8):
+            next(renderBoard)
+        for i in range(8):
+            value = next(renderBoard)
+            if value == 0:
+                outputb += "     |"
+            else:
+                outputb += " " + str(value[0]) + "." + str(value[1]) + " |"
+        print(start_two + outputb + "-----|-----|-----|\n")
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        for i in range(8):
+            next(renderBoard)
+        for i in range(8):
+            value = next(renderBoard)
+            if value == 0:
+                outputc += "     |"
+            else:
+                outputc += " " + str(value[0]) + "." + str(value[1]) + " |"
+        print(start_two + outputc + "-----|-----|-----|")
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        for i in range(5):
+            next(renderBoard)
+        for i in range(14):
+            value = next(renderBoard)
+            if value == 0:
+                outputd += "     |"
+            else:
+                outputd += " " + str(value[0]) + "." + str(value[1]) + " |"
+        print(start_one + outputd)
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        for i in range(2):
+            next(renderBoard)
+        for i in range(14):
+            value = next(renderBoard)
+            if value == 0:
+                outpute += "     |"
+            else:
+                outpute += " " + str(value[0]) + "." + str(value[1]) + " |"
+        print(start_one + outpute)
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        for i in range(2):
+            next(renderBoard)
+        for i in range(14):
+            value = next(renderBoard)
+            if value == 0:
+                outputf += "     |"
+            else:
+                outputf += " " + str(value[0]) + "." + str(value[1]) + " |"
+        print(start_one + outputf)
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        for i in range(2):
+            next(renderBoard)
+        for i in range(14):
+            value = next(renderBoard)
+            if value == 0:
+                outputg += "     |"
+            else:
+                outputg += " " + str(value[0]) + "." + str(value[1]) + " |"
+        print(start_one + outputg)
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        for i in range(2):
+            next(renderBoard)
+        for i in range(14):
+            value = next(renderBoard)
+            if value == 0:
+                outputh += "     |"
+            else:
+                outputh += " " + str(value[0]) + "." + str(value[1]) + " |"
+        print(start_one + outputh)
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        for i in range(2):
+            next(renderBoard)
+        for i in range(14):
+            value = next(renderBoard)
+            if value == 0:
+                outputi += "     |"
+            else:
+                outputi += " " + str(value[0]) + "." + str(value[1]) + " |"
+        print(start_one + outputi)
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        for i in range(2):
+            next(renderBoard)
+        for i in range(14):
+            value = next(renderBoard)
+            if value == 0:
+                outputj += "     |"
+            else:
+                outputj += " " + str(value[0]) + "." + str(value[1]) + " |"
+        print(start_one + outputj)
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        for i in range(2):
+            next(renderBoard)
+        for i in range(14):
+            value = next(renderBoard)
+            if value == 0:
+                outputk += "     |"
+            else:
+                outputk += " " + str(value[0]) + "." + str(value[1]) + " |"
+        print(start_one + outputk)
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        for i in range(5):
+            next(renderBoard)
+        for i in range(8):
+            value = next(renderBoard)
+            if value == 0:
+                outputl += "     |"
+            else:
+                outputl += " " + str(value[0]) + "." + str(value[1]) + " |"
+        print(start_two + outputl + "-----|-----|-----|\n")
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        for i in range(8):
+            next(renderBoard)
+        for i in range(8):
+            value = next(renderBoard)
+            if value == 0:
+                outputm += "     |"
+            else:
+                outputm += " " + str(value[0]) + "." + str(value[1]) + " |"
+        print(start_two + outputm + "-----|-----|-----|\n")
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        for i in range(8):
+            next(renderBoard)
+        for i in range(8):
+            value = next(renderBoard)
+            if value == 0:
+                outputn += "     |"
+            else:
+                outputn += " " + str(value[0]) + "." + str(value[1]) + " |"
+        print(start_two + outputn + "-----|-----|-----|\n")
+        print("+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n")
+        
