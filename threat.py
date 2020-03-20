@@ -142,6 +142,23 @@ def is_king_threat(from_key, to_key, board):
                     return True
     return False
 
+def is_not_enpassant_pawn_move(from_key, to_key, board):
+    """ Detects Enpassant Moves """
+    if valid_key(from_key) and valid_key(to_key):
+        data = board[from_key]
+        if data != 0 and data[1] == 0:
+            direction_check = [
+                directions[0],
+                directions[1],
+                directions[2],
+                directions[3]
+            ]
+            for direct in direction_check:
+                actual_to_key = from_key + direct
+                if actual_to_key == to_key:
+                    return True
+    return False
+
 def loop_direction(from_key, to_key, board, direction):
     """ Loops Directions """
     res = ''

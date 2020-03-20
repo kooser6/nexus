@@ -1,4 +1,5 @@
 import data.tests.move_tests
+import data.tests.threat_tests
 from game_state import GameState
 import random
 import minimax
@@ -7,37 +8,29 @@ state = GameState(0, data.tests.move_tests.board_xre, 0, [[True, True], [True, T
 
 state.render()
 
-depth = 1
+depth = 3
 
 print("_______________________________________________________________________________________________________")
 
-for i in range(32):
-    best = [[], '-']
-    if state.is_maximizer == True:
-        best_score = minimax.maximizer
-    else:
-        best_score = minimax.minimizer
+for i in range(20):
+    max = -99999
+    min = 99999
+    best_action = []
     avaliable_actions = state.get_actions()
     for action in avaliable_actions:
         newState = state.play_action(action)
-        if state.is_maximizer == True:
-            oppo = False
+        if state.color == 0 or state.color == 2:
+            score = minimax.maxi(newState, depth - 1, -99999, 99999)
+            if score > max:
+                best_action = action
+                max = score
         else:
-            oppo = True
-        data = minimax.minimax(newState, depth - 1, oppo)
-        score = data[1]
-        if best[0] == []:
-            best[0] == action
-        if state.is_maximizer == True:
-            if score > best_score:
-                best = [action, score]
-        else:
-            if score < best_score:
-                best = [action, score]
+            score = minimax.mini(newState, depth - 1, -99999, 99999)
+            if score < min:
+                best_action = action
+                max = score
         state = newState.undo_action()
-    state = state.play_action(best[0])
+    state = state.play_action(best_action)
     state.render()
-    print("_______________________________________________________________________________________________________")
-    print("Eval: " + str(best[1]))
     print("_______________________________________________________________________________________________________")
     

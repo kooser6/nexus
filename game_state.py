@@ -30,23 +30,21 @@ class GameState:
             ext_rep = move.castle_rep_keys[action[0]][action[1]]
             new_board[action[1]] = self.board[action[0]]
             new_board[action[0]] = 0
-            new_board[req] = 0
-            new_board[rep] = [self.color, 3]
+            new_board[ext_req] = 0
+            new_board[ext_rep] = [self.color, 3]
             new_castle_rights[self.color][0] = False
             new_castle_rights[self.color][1] = False
             if self.color == 0:
                 new_half_moves += 1
             new_enpassants[self.color] = '-'
             skipRest = True
-        elif self.board[action[0]] == 0:
-            temp_board = self.board[:]
-            temp_board[action[0]][1] = 5
-            if not(threat.is_king_threat(action[0], action[1], temp_board)):
-                if move == 0:
+        elif self.board[action[0]][1] == 0:
+            if not(threat.is_not_enpassant_pawn_move(action[0], action[1], self.board)):
+                if self.color == 0:
                     new_enpassants[self.color] = action[1] + threat.directions[1]
-                elif move == 1:
+                elif self.color == 1:
                     new_enpassants[self.color] = action[1] + threat.directions[2]
-                elif move == 2:
+                elif self.color == 2:
                     new_enpassants[self.color] = action[1] + threat.directions[0]
                 else:
                     new_enpassants[self.color] = action[1] + threat.directions[3]
@@ -61,8 +59,8 @@ class GameState:
                     else:
                         direct = threat.directions[2]
                     new_board[direct] = 0
-            if is_promotion_key(to_key, move):
-                if valid_promotion(promotion_code):
+            if move.is_promotion_key(action[1], self.color):
+                if move.valid_promotion(promotion_code):
                     new_board[action[0]][1] = promotion_code
         if skipRest == False:
             if self.board[action[1]] != 0:
@@ -109,7 +107,7 @@ class GameState:
 
     def gameover(self):
         """ Check To See If This Is A Final Position """
-        return state.is_gameover(self.color, self.board, self.half_moves, self.castle_rights, self.enpassants)
+        return state.is_gameover(self.color, self.board, self.half_moves, self.castle_rights, self.enpassants, self.history)
 
     def maximizer_winning(self):
         """ Check To See If The Maximizer Player Is Winning """
