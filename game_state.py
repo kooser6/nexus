@@ -99,33 +99,9 @@ class GameState:
         new_state = GameState(new_color, new_board, new_half_moves, new_castle_rights, new_enpassants, new_history)
         return new_state
 
-    def is_maximizer(self):
-        """ Check To See If The Player Is The Maximizer """
-        if self.color == 0 or self.color == 2:
-            return True
-        return False
-
     def gameover(self):
         """ Check To See If This Is A Final Position """
         return state.is_gameover(self.color, self.board, self.half_moves, self.castle_rights, self.enpassants, self.history)
-
-    def maximizer_winning(self):
-        """ Check To See If The Maximizer Player Is Winning """
-        if state.is_draw(self.color, self.board, self.half_moves, self.castle_rights, self.enpassants):
-            return False
-        elif state.in_checkmate(0, self.board, self.castle_rights, self.enpassants) or state.in_checkmate(2, self.board, self.castle_rights, self.enpassants):
-            return False
-        else:
-            return True
-
-    def minimizer_winning(self):
-        """ Check To See If The Minimizer Player Is Winning """
-        if state.is_draw(self.color, self.board, self.half_moves, self.castle_rights, self.enpassants):
-            return False
-        elif state.in_checkmate(1, self.board, self.castle_rights, self.enpassants) or state.in_checkmate(3, self.board, self.castle_rights, self.enpassants):
-            return False
-        else:
-            return True
 
     def undo_action(self):
         """ Undo The Action """
