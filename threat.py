@@ -1,3 +1,8 @@
+# This file is part of Fisheater, A strong 4 player chess engine,
+# and is released under the "GNU General Public License v3.0". Please see the LICENSE
+# file that should have been included as part of this package.
+#------------------------------------------------------------------------------------
+
 directions = [-16, 16, -1, 1, -15, -17, 15, 17]
 valid_keys = [
                    36,  37,  38,  39,  40,  41,  42,  43,
