@@ -137,20 +137,7 @@ class GameState:
 
     def render(self):
         """ Render The Board State """
-        outputa = ""
-        outputb = ""
-        outputc = ""
-        outputd = ""
-        outpute = ""
-        outputf = ""
-        outputg = ""
-        outputh = ""
-        outputi = ""
-        outputj = ""
-        outputk = ""
-        outputl = ""
-        outputm = ""
-        outputn = ""
+        outputa = outputb = outputc = outputd = outpute = outputf = outputg = outputh = outputi = outputj = outputk = outputl = outputm = outputn = ""
         start_one = "|"
         start_two = "|-----|-----|-----|"
         renderBoard = iter(self.board[:])
