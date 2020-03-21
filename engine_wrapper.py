@@ -7,13 +7,10 @@ class EngineWrapper:
     def __init__(self, board, commands, options = None, silence_stderr = False):
         pass
 
-    def set_time_control(self, game):
+    def first_search(self, board):
         pass
 
-    def first_search(self, board, movetime):
-        pass
-
-    def search(self, board, wtime, btime, winc, binc):
+    def search(self, board, winc, binc):
         pass
 
     def print_stats(self):
