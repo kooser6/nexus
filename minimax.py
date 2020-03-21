@@ -1,13 +1,13 @@
 import evaluation
 
-def maxi(state, depth, alpha, beta):
+def maxi(state, depth, alpha, beta, phase):
     if depth == 0 or state.gameover() == True:
-        return evaluation.evaluate(state.board)
+        return evaluation.evaluate(state.board, phase)
     avaliable_actions = state.get_actions()
     doBreak = False
     for action in avaliable_actions:
         newState = state.play_action(action)
-        score = mini(newState, depth - 1, alpha, beta)
+        score = mini(newState, depth - 1, alpha, beta, phase)
         if score >= beta:
             alpha = beta
             doBreak = True
@@ -18,14 +18,14 @@ def maxi(state, depth, alpha, beta):
             break
     return alpha
 
-def mini(state, depth, alpha, beta):
+def mini(state, depth, alpha, beta, phase):
     if depth == 0 or state.gameover() == True:
-        return -evaluation.evaluate(state.board)
+        return -evaluation.evaluate(state.board, phase)
     avaliable_actions = state.get_actions()
     doBreak = False
     for action in avaliable_actions:
         newState = state.play_action(action)
-        score = maxi(newState, depth - 1, alpha, beta)
+        score = maxi(newState, depth - 1, alpha, beta, phase)
         if score <= alpha:
             beta = alpha
             doBreak = True

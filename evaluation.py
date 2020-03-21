@@ -1,4 +1,3 @@
-import extras
 import math
 import threat
 
@@ -146,7 +145,7 @@ def evaluate_position(board, phase):
     if phase == 1:
         start = 0
         for key, square in enumerate(board):
-            if valid_key(key)
+            if threat.valid_key(key):
                 if square == 0:
                     continue
                 if square[1] == 0:
@@ -160,7 +159,7 @@ def evaluate_position(board, phase):
     else:
         start = 0
         for key, square in enumerate(board):
-            if valid_key(key)
+            if threat.valid_key(key):
                 if square == 0:
                     continue
                 if square[1] == 0:
