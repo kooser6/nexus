@@ -51,13 +51,13 @@ class GameState:
             for enpassant_check in new_enpassants:
                 if action[1] == enpassant_check:
                     if self.color == 0:
-                        direct = threat.directions[0]
+                        direct = action[1] + threat.directions[0]
                     elif self.color == 1:
-                        direct = threat.directions[3]
+                        direct = action[1] + threat.directions[3]
                     elif self.color == 2:
-                        direct = threat.directions[1]
+                        direct = action[1] + threat.directions[1]
                     else:
-                        direct = threat.directions[2]
+                        direct = action[1] + threat.directions[2]
                     new_board[direct] = 0
             if move.is_promotion_key(action[1], self.color):
                 if move.valid_promotion(promotion_code):
