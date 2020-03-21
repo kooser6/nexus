@@ -1,3 +1,8 @@
+# This file is part of Fisheater, A strong 4 player chess engine,
+# and is released under the "GNU General Public License v3.0". Please see the LICENSE
+# file that should have been included as part of this package.
+#------------------------------------------------------------------------------------
+
 coordinates = [
                          'd14', 'e14', 'f14', 'g14', 'h14', 'i14', 'j14', 'k14',
                          'd13', 'e13', 'f13', 'g13', 'h13', 'i13', 'j13', 'k13',
@@ -14,3 +19,7 @@ coordinates = [
                          'd2',  'e2',  'f2',  'g2',  'h2',  'i2',  'j2',  'k2',
                          'd1',  'e1',  'f1',  'g1',  'h1',  'i1',  'j1',  'k1',
 ]
+
+def parseFenAndReturnGameState():
+    """ Parse The Fen And Get The Game State
+    
