@@ -3,6 +3,8 @@
 # file that should have been included as part of this package.
 #------------------------------------------------------------------------------------
 
+import os
+
 class EngineWrapper:
     def __init__(self, board, commands, options = None, silence_stderr = False):
         pass
