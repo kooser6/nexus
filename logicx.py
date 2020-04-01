@@ -379,7 +379,7 @@ def in_stalemate(color, board, castle_rights, enpassants):
         return bool(True)
     return bool(False)
 
-def int in_check(board, color):
+def in_check(board, color):
     """ Detects Checks """
     ret = 0
     for key, square in enumerate(board):
