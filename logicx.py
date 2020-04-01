@@ -1,6 +1,3 @@
-from cpython cimport array
-from cpython cimport bool
-
 piece_val = [100, 375, 475, 600, 1275, 26000]
 pawn_start_keys = [  52, 53, 54, 55, 56, 57, 58, 59, 82, 98, 114, 130, 146, 162, 178, 194, 93, 109, 125, 141, 157, 173, 189, 205, 228, 229, 230, 231, 232, 233, 234, 235]
 castle_req_keys = {
